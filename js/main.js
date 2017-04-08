@@ -4,7 +4,7 @@ $(document).ready(function () {
 	requestJsonAsync(repoUri, function(data) {
 		if (data.message === undefined) {
 			sortBy(data, {
-			  prop: "updated_at",
+			  prop: "pushed_at",
 			  desc: true
 			});
 
@@ -31,7 +31,7 @@ $(document).ready(function () {
 								'<div class="innercontainer">' +
 									'<h2>{ <a href="' + data[i].html_url + '">' + data[i].name + '</a> }</h2>' +
 									'<p><span class="project-description">' + data[i].description + '</span></p>' +
-									'<p>' + language + starts + forks + ' Updated <relative-time datetime="' + data[i].updated_at + '"></relative-time></p>' +
+									'<p>' + language + starts + forks + ' Updated <relative-time datetime="' + data[i].pushed_at + '"></relative-time></p>' +
 									'<p class="contributors">' + contributors + '</p>' +
 								'</div>' +
 							'</div>';

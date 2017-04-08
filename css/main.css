@@ -23,11 +23,11 @@ div#topinner {
 	padding: 0 10px;
 }
 
-div.container {
+div.main-container {
 	background: #FFFFFF;
 }
 
-div.container:nth-child(odd) {
+div.main-container:nth-child(odd) {
 	background: #EEEEEE;
 }
 
@@ -67,13 +67,17 @@ h1, h2 {
 }
 
 a {
-	color: #262626;
-	transition: 0.1s;
-	text-decoration:none;
+	color: #262626 !important;
+	transition: 0.1s !important;
+	text-decoration: none !important;
 }
 
 a:hover {
-	color: #767676;
+	color: #767676 !important;
+}
+
+.contributors img {
+	padding-right: 5px;
 }
 
 @media only screen and (max-width: 980px) {
@@ -91,32 +95,50 @@ a:hover {
 	padding-right: 16px;
 }
 
-.center-block {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.text-left {
-	text-align: left;
-}
-
-.text-center {
-	text-align: center;
-}
-
-.text-right {
-	text-align: right;
-}
-
-.text-justify {
-	text-align: justify;
-}
-
-.text-nowrap {
-	white-space: nowrap;
-}
-
 .display-none {
 	display: none;
+}
+
+.html {
+	color: #e34c26;
+}
+
+.css {
+	color: #563d7c;
+}
+
+.javascript {
+	color: #f1e05a;
+}
+
+.php {
+	color: #4F5D95;
+}
+
+.csharp {
+	color: #178600;
+}
+
+.cpp {
+	color: #f34b7d;
+}
+
+.lua {
+	color: #000080;
+}
+
+.python {
+	color: #3572A5;
+}
+
+.go {
+	color: #375eab;
+}
+
+.java {
+	color: #b07219;
+}
+
+.shell {
+	color: #89e051;
 }

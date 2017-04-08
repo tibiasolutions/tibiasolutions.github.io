@@ -8,7 +8,8 @@
 		<title>Tibia Solutions :: Amazing solutions for Tibia and OTServ.</title>
 
 		<link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
-		<link href="css/main.css?v=ee3b3b6900ddb901217aadf14f815eb4" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link href="css/main.css?v=837b6be330d868a6af0883eebed07818" rel="stylesheet" type="text/css" />
 		<link href="css/squares.css?v=ee3b3b6900ddb901217aadf14f815eb4" rel="stylesheet" type="text/css" />
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css" />
 		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -30,7 +31,7 @@
 			</div>
 		</div>
 
-		<div class="container">
+		<div class="main-container">
 			<div class="innercontainer">
 				<p>We are a group of developers using our knowledge to develope tools for facilitate / help the fun of users or other developers. We have no intention of earning profits, we do this as a hobby and also a way to improve our skills.</p>
 
@@ -41,7 +42,7 @@
 		</div>
 
 		<div id="loader">
-			<div class="container">
+			<div class="main-container">
 				<div class="innercontainer">
 					<div class="uil-squares-css center-block"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>
 				</div>
@@ -60,9 +61,15 @@
 			<a href="mailto:contact@tibia.solutions">contact@tibia.solutions</a>
 		</div>
 
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.23/webcomponents.min.js"></script>
 		<script src="js/time-elements.js"></script>
 		<script src="js/main.js"></script>
+		<script>
+			$(function () {
+				$('[data-toggle="tooltip"]').tooltip();
+			});
+		</script>
 	</body>
 </html>

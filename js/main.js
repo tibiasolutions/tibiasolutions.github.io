@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	var repoUri  = 'https://api.github.com/users/tibiasolutions/repos';
 
-	requestJsonAsync(repoUri, function(data) {
+	requestJson(repoUri, function(data) {
 		if (data.message === undefined) {
 			sortBy(data, {
 			  prop: "pushed_at",
@@ -9,22 +9,26 @@ $(document).ready(function () {
 			});
 
 			for (var i = 0; i < data.length; i++) {
+				var contributorsId = 'contributors_' + data[i].id;
 				var contributorsUri = data[i].contributors_url;
 				var classColor = data[i].language !== null ? data[i].language.replace('#', 'sharp').replace('++', 'pp').toLowerCase() : '';
 
 				var language = data[i].language !== null ? '<span class="item-info"><i class="fa fa-circle ' + classColor + '" aria-hidden="true"></i> ' + data[i].language + '</span>' : '';
 				var starts =  data[i].stargazers_count > 0 ? '<span class="item-info"><i class="fa fa-star info" aria-hidden="true"></i> ' + data[i].stargazers_count + '</span>' : '';
 				var forks =  data[i].forks_count > 0 ? '<span class="item-info"><i class="fa fa-code-fork info" aria-hidden="true"></i> ' + data[i].forks + '</span>' : '';
-				var contributors = '';
+				
+				requestContributors(contributorsUri, contributorsId, function(id, contributor) {
+					var contributors = '';
 
-				requestJson(contributorsUri, function(contributor) {
 					for (var j = 0; j < contributor.length; j++) {
 						var contributorHtml = '<a href="' + contributor[j].html_url + '" class="img-circle" data-toggle="tooltip" data-placement="bottom" title="' + contributor[j].login + '">' +
-													'<img src="' + contributor[j].avatar_url + '&s=25" />' +
-												'</a>';
+								'<img src="' + contributor[j].avatar_url + '&s=25" />' +
+							'</a>';
 
 						contributors += contributorHtml;
 					}
+					
+					$('#' + id).append(contributors);
 				});
 
 				var html = '<div class="main-container">' +
@@ -32,9 +36,13 @@ $(document).ready(function () {
 									'<h2>{ <a href="' + data[i].html_url + '">' + data[i].name + '</a> }</h2>' +
 									'<p><span class="project-description">' + data[i].description + '</span></p>' +
 									'<p>' + language + starts + forks + ' Updated <relative-time datetime="' + data[i].pushed_at + '"></relative-time></p>' +
-									'<p class="contributors">' + contributors + '</p>' +
+									'<p class="contributors" id="' + contributorsId + '"></p>' +
 								'</div>' +
 							'</div>';
+
+				$('.contributors').each(function() {
+					$( this ).addClass( "foo" );
+				});
 
 				$('#content').append(html);
 			}
@@ -47,11 +55,11 @@ $(document).ready(function () {
 	});
 });
 
-function requestJsonAsync(url, callback) {
+function requestContributors(url, id, callback) {
 	$.ajax({
 		url: url,
 		complete: function(xhr) {
-			callback.call(null, xhr.responseJSON);
+			callback.call(null, id, xhr.responseJSON);
 		}
 	});
 }
@@ -59,7 +67,6 @@ function requestJsonAsync(url, callback) {
 function requestJson(url, callback) {
 	$.ajax({
 		url: url,
-		async: false,
 		complete: function(xhr) {
 			callback.call(null, xhr.responseJSON);
 		}

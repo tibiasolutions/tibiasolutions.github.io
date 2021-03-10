@@ -1,5 +1,7 @@
 $(document).ready(function () {
 	var repoUri  = 'https://api.github.com/users/tibiasolutions/repos';
+	
+	$("#footer-text").html("&copy; 2017-" + new Date().getFullYear() + " Tibia Solutions");
 
 	requestJson(repoUri, function(data) {
 		if (data.message === undefined) {
@@ -30,19 +32,18 @@ $(document).ready(function () {
 					
 					$('#' + id).append(contributors);
 				});
+				
+				var date = moment(data[i].pushed_at);
+				var friedlyDate = date.fromNow();
 
 				var html = '<div class="main-container">' +
 								'<div class="innercontainer">' +
 									'<h2>{ <a href="' + data[i].html_url + '">' + data[i].name + '</a> }</h2>' +
 									'<p><span class="project-description">' + data[i].description + '</span></p>' +
-									'<p>' + language + starts + forks + ' Updated <relative-time datetime="' + data[i].pushed_at + '"></relative-time></p>' +
+									'<p>' + language + starts + forks + ' Updated ' + friedlyDate + '</p>' +
 									'<p class="contributors" id="' + contributorsId + '"></p>' +
 								'</div>' +
 							'</div>';
-
-				$('.contributors').each(function() {
-					$( this ).addClass( "foo" );
-				});
 
 				$('#content').append(html);
 			}

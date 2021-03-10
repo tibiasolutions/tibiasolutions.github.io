@@ -28,7 +28,7 @@ div.main-container {
 }
 
 div.main-container:nth-child(odd) {
-	background: #EEEEEE;
+	background: #f3f3f3;
 }
 
 div.innercontainer {
